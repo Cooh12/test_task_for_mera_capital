@@ -1,14 +1,8 @@
 from datetime import datetime
-from enum import Enum
 
 from app.core.models import dto
 from app.core.models.enums.tickers import Ticker
 from app.infrastructure.db.dao.holder import HolderDao
-
-
-class CoinName(str, Enum):
-    BTC = "btc"
-    ETH = "eth"
 
 
 async def get_current_price(dao: HolderDao, ticker: Ticker) -> dto.Ticker:
