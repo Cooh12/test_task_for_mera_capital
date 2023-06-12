@@ -1,4 +1,4 @@
 from .base import BaseModel
-from .coin import Coin
+from .ticker import Ticker
 
-__all__ = ["BaseModel", "Coin"]
+__all__ = ["BaseModel", "Ticker"]

@@ -1,7 +1,7 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 
-from app.infrastructure.client.api import DeribitClient
+from app.infrastructure.client.client import DeribitClient
 from app.infrastructure.scheduler.context import ScheduledContextHolder
 from app.infrastructure.scheduler.wrappers import add_new_values
 

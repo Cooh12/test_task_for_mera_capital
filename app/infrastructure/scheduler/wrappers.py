@@ -2,6 +2,7 @@ import asyncio
 from contextlib import asynccontextmanager
 from typing import AsyncIterator
 
+from app.core.models.enums.tickers import Ticker
 from app.infrastructure.db.dao.holder import HolderDao
 from app.infrastructure.scheduler.context import ScheduledContext, ScheduledContextHolder
 
@@ -19,8 +20,7 @@ async def prepare_context() -> AsyncIterator[ScheduledContext]:
 
 
 async def add_new_values() -> None:
-    tickers = ('btc_usd', 'eth_usd')
-    tasks = (add_new_value(ticker) for ticker in tickers)
+    tasks = (add_new_value(ticker.value) for ticker in Ticker)
     await asyncio.gather(*tasks)
 
 

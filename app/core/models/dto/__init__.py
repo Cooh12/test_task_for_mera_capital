@@ -1,3 +1,3 @@
-from .index import Coin
+from .index import Ticker
 
-__all__ = ['Coin']
+__all__ = ['Ticker']

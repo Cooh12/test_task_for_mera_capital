@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 
-from app.infrastructure.client.api import DeribitClient
+from app.infrastructure.client.client import DeribitClient
 from app.infrastructure.db.dao.holder import HolderDao
 
 

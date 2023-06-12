@@ -5,7 +5,7 @@ from app.infrastructure.db import models as db_models
 
 
 @dataclass
-class Coin:
+class Ticker:
     coin_name: str
     estimated_delivery_price: float
     index_price: float
@@ -13,7 +13,7 @@ class Coin:
 
     @property
     def to_db(self):
-        return db_models.Coin(
+        return db_models.Ticker(
             coin_name=self.coin_name,
             estimated_delivery_price=self.estimated_delivery_price,
             index_price=self.index_price,

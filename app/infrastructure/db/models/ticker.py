@@ -5,8 +5,8 @@ from app.core.models import dto
 from .base import BaseModel
 
 
-class Coin(BaseModel):
-    __tablename__ = 'coins'
+class Ticker(BaseModel):
+    __tablename__ = 'tickers'
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
     coin_name: Mapped[str] = mapped_column(Text)
     estimated_delivery_price: Mapped[float] = mapped_column(Numeric)
@@ -15,7 +15,7 @@ class Coin(BaseModel):
 
     @property
     def to_dto(self):
-        return dto.Coin(
+        return dto.Ticker(
             coin_name=self.coin_name,
             estimated_delivery_price=self.estimated_delivery_price,
             index_price=self.index_price,

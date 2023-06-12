@@ -1,4 +1,4 @@
 from .base import BaseDAO
-from .coin import CoinDAO
+from .ticker import TickerDAO
 
-__all__ = ["BaseDAO", "CoinDAO"]
+__all__ = ["BaseDAO", "TickerDAO"]

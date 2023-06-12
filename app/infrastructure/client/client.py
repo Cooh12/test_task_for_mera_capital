@@ -9,7 +9,7 @@ from app.infrastructure.client.urls import Urls
 class DeribitClient(BaseClient, DeribitProtocol):
     url = Urls()
     _retort = Retort(recipe=[
-        name_mapping(dto.Coin, map=[{
+        name_mapping(dto.Ticker, map=[{
             "coin_name": "coin_name",
             "index_price": ("model", "index_price"),
             "estimated_delivery_price": ("model", "estimated_delivery_price"),
@@ -19,10 +19,10 @@ class DeribitClient(BaseClient, DeribitProtocol):
     def __init__(self):
         super().__init__(session=self.create_session())
 
-    async def get_index_price(self, ticker: str) -> dto.Coin:
+    async def get_index_price(self, ticker: str) -> dto.Ticker:
         url = self.url.GET_INDEX_PRICE.format(ticker)
         response = await self._get(url)
-        return self._retort.load({"coin_name": ticker.split('_')[0], "model": response.get('result')}, dto.Coin)
+        return self._retort.load({"coin_name": ticker, "model": response.get('result')}, dto.Ticker)
 
     async def __aenter__(self):
         return self
