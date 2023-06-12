@@ -1,5 +1,4 @@
-from .base import TimedBaseModel, BaseModel
-from .btc import BTC
-from .eth import ETH
+from .base import BaseModel
+from .coin import Coin
 
-__all__ = ["TimedBaseModel", "BaseModel", "BTC", "ETH"]
+__all__ = ["BaseModel", "Coin"]

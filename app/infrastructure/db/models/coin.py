@@ -1,22 +1,23 @@
-from sqlalchemy import BigInteger, Numeric
+from sqlalchemy import Numeric, Text, BigInteger
 from sqlalchemy.orm import mapped_column, Mapped
 
 from app.core.models import dto
 from .base import BaseModel
 
 
-class BTC(BaseModel):
-    __tablename__ = 'btc_coin'
-
+class Coin(BaseModel):
+    __tablename__ = 'coins'
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    coin_name: Mapped[str] = mapped_column(Text)
     estimated_delivery_price: Mapped[float] = mapped_column(Numeric)
     index_price: Mapped[float] = mapped_column(Numeric)
-    current_time: Mapped[float] = mapped_column(Numeric)
+    created_at: Mapped[float] = mapped_column(Numeric)
 
     @property
     def to_dto(self):
-        return dto.BTC(
+        return dto.Coin(
+            coin_name=self.coin_name,
             estimated_delivery_price=self.estimated_delivery_price,
             index_price=self.index_price,
-            current_time=self.current_time
+            created_at=self.created_at
         )

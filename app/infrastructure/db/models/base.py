@@ -1,7 +1,5 @@
-import datetime
-
-from sqlalchemy import MetaData, func
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, registry
+from sqlalchemy import MetaData
+from sqlalchemy.orm import DeclarativeBase, registry
 
 convention = {
     "ix": "ix_%(column_0_label)s",
@@ -17,14 +15,3 @@ mapper_registry = registry(metadata=MetaData(naming_convention=convention))
 class BaseModel(DeclarativeBase):
     registry = mapper_registry
     metadata = mapper_registry.metadata
-
-
-class TimedBaseModel(BaseModel):
-    __abstract__ = True
-
-    created_at: Mapped[datetime.datetime] = mapped_column(nullable=False, server_default=func.now())
-    updated_at: Mapped[datetime.datetime] = mapped_column(
-        nullable=False,
-        server_default=func.now(),
-        onupdate=func.now(),
-    )

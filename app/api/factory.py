@@ -4,8 +4,8 @@ import uvicorn as uvicorn
 from fastapi import FastAPI
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from app.infrastructure.api import setup_routes
-from app.infrastructure.api.providers import setup_providers
+from app.api import setup_routes
+from app.api.providers import setup_providers
 
 logger = logging.getLogger(__name__)
 

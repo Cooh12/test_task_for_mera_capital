@@ -14,6 +14,7 @@ class ApScheduler:
 
     async def start(self):
         self.scheduler.start()
+        await self.job()
 
     async def close(self):
         self.scheduler.shutdown()

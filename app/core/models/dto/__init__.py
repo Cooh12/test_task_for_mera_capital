@@ -1,4 +1,3 @@
-from .btc import BTC
-from .eth import ETH
+from .index import Coin
 
-__all__ = ['BTC', 'ETH']
+__all__ = ['Coin']

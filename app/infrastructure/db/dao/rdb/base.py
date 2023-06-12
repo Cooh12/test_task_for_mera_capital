@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import TypeVar, Type, Generic, Sequence
 
 from sqlalchemy import delete, func, ScalarResult
@@ -51,16 +50,3 @@ class BaseDAO(Generic[Model]):
 
     async def _flush(self, *objects: BaseModel):
         await self.session.flush(objects)
-
-    async def get_curent_price(self):
-        result = await self.session.execute(select(self.model).order_by(self.model.id.desc()).limit(1))
-        return result.scalar_one()
-
-    async def get_all_values(self, date_from: int | None, date_to: int | None):
-        if not date_from:
-            date_from = 1686420252
-        if not date_to:
-            date_to = float(datetime.now().timestamp())
-        query = select(self.model).where(self.model.current_time.between(date_from, date_to))
-        result = await self.session.execute(query)
-        return result.scalars().all()

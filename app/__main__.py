@@ -3,9 +3,9 @@ import logging
 
 from sqlalchemy.orm import close_all_sessions
 
+from app.api.factory import init_api, run_api
 from app.common.config import load_config, Config
 from app.common.config.logging_config import setup_logging
-from app.infrastructure.api.factory import init_api, run_api
 from app.infrastructure.db.factory import create_engine, create_session_maker
 from app.infrastructure.scheduler import ApScheduler
 
@@ -20,7 +20,6 @@ async def main():
     scheduler = ApScheduler(pool)
     app = init_api(False, pool)
     try:
-        await scheduler.job()
         await scheduler.start()
         await run_api(app)
     finally:
