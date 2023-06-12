@@ -27,5 +27,5 @@ async def add_new_values() -> None:
 async def add_new_value(ticker: str) -> None:
     async with prepare_context() as context:  # type: ScheduledContext
         result = await context.client.get_index_price(ticker)
-        context.dao.coin._save(result.to_db)
-        await context.dao.coin.commit()
+        context.dao.ticker._save(result.to_db)
+        await context.dao.ticker.commit()
