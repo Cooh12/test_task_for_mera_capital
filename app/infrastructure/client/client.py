@@ -22,6 +22,7 @@ class DeribitClient(BaseClient, DeribitProtocol):
     async def get_index_price(self, ticker: str) -> dto.Ticker:
         url = self.url.GET_INDEX_PRICE.format(ticker)
         response = await self._get(url)
+        print(self._retort.load({"coin_name": ticker, "model": response.get('result')}, dto.Ticker))
         return self._retort.load({"coin_name": ticker, "model": response.get('result')}, dto.Ticker)
 
     async def __aenter__(self):

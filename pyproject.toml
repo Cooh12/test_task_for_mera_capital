@@ -20,6 +20,7 @@ apscheduler = "^3.10.1"
 fastapi = "^0.96.0"
 uvicorn = "^0.22.0"
 colorlog = "^6.7.0"
+pytest = "^7.3.2"
 
 
 [build-system]
